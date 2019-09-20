@@ -1,1 +1,26 @@
-<p>base-layout works!</p>
+<div>
+    <!-- Page header -->
+    <header></header>
+
+    <!-- Main page content -->
+    <main>
+        <a>Hello</a>
+
+        <mat-card class="sign-in-container">
+            <mat-card-title>
+                Sign Up
+            </mat-card-title>
+            <mat-card-content class="one-column-form">
+                <mat-form-field>
+                    <mat-label>Login</mat-label>
+                    <input matInput placeholder="First Name" autocomplete="off">
+                </mat-form-field><br><br>
+                <div class="button-bar">
+                    <button mat-raised-button color="primary">Submit</button>
+                    <button mat-raised-button color="accent">Cancel</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <router-outlet></router-outlet>
+    </main>
+</div>

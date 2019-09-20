@@ -1,0 +1,16 @@
+.sign-in-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sign-in-container {
+    width: 65%;
+  }
+
+  .mat-card {
+    padding: 0px !important;
+
+    mat-card-title, mat-card-content {
+        padding: 0.5em;
+    }
+}

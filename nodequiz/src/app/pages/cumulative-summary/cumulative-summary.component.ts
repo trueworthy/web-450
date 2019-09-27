@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
-  selector: 'app-cumulative-summary',
-  templateUrl: './cumulative-summary.component.html',
-  styleUrls: ['./cumulative-summary.component.css']
+  selector: 'app-cumulative-summary'
 })
 export class CumulativeSummaryComponent implements OnInit {
 

@@ -15,6 +15,9 @@ import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulativ
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { RouterModule } from '@angular/router';
+
 
 //import {HttpClientModule, HttpClient} from ''
 @NgModule({
@@ -27,6 +30,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
     DashboardComponent,
     NotFoundComponent,
     AuthLayoutComponent,
+    AuthGuard,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,6 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
     FormsModule
   ],
   providers: [ CookieService ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, RouterModule]
 })
 export class AppModule { }

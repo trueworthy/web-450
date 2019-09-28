@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routing';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 import { AppComponent } from './app.component';
@@ -16,8 +17,10 @@ import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulativ
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -35,11 +38,15 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     HttpClientModule,
     FlexLayoutModule,
     FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
     MatCardModule,
     MatFormFieldModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
   ],
-  providers: [CookieService],
+  providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,7 +11,7 @@
                             Id number is a required field</small>
                         <small
                             *ngIf="form.controls['employeeId'].hasError('pattern') && form.controls['employeeId'].touched">employee
-                            Id number must be an Integer value.</small>
+                            Invalid, Please Try again</small>
                         <mat-form-field fxFlex>
                             <input type="text" matInput [formControl]="form.controls['employeeId']"
                                 placeholder="1234" />

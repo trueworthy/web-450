@@ -8,8 +8,9 @@ const http = require('http');
 const mongoose = require('mongoose');
 const Employee = require('./models/employees');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const path = require('path');
 const createError = require('http-errors');
-
 
 const port = 3000; // port the application listens on
 
@@ -34,6 +35,9 @@ let app = express();
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 'extended': 'false' }));
+
+app.use(express.static(path.join(__dirname, '../dist/nodequiz')));
+app.use('/', express.static(path.join(__dirname, '../dist/nodequiz')));
 
 // API routes
 /**

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routing';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -37,6 +37,7 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from 
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
     MatIconModule,

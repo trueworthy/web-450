@@ -1,53 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatSidenavModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { CookieService } from 'ngx-cookie-service';
+import { AppRoutes } from './app.routing';
+import { RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './pages/login/login.component';
-import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { AuthGuard } from './shared/guard/auth.guard';
-import { RouterModule } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field'
 
-
-//import {HttpClientModule, HttpClient} from ''
 @NgModule({
   declarations: [
     AppComponent,
     BaseLayoutComponent,
-    HeaderComponent,
-    LoginComponent,
-    CumulativeSummaryComponent,
     DashboardComponent,
+    LoginComponent,
     NotFoundComponent,
+    CumulativeSummaryComponent,
     AuthLayoutComponent,
-    AuthGuard,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSidenavModule,
-    MatCardModule,
+    HttpClientModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
   ],
-  providers: [ CookieService ],
-  bootstrap: [AppComponent, RouterModule]
+  providers: [CookieService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

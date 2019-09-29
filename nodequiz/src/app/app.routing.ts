@@ -8,36 +8,18 @@ import {AuthGuard} from './shared/guards/auth.guard';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 
 export const AppRoutes: Routes = [
-  {
+  { path: '', component: LoginComponent, 
+  //canActivate: [AuthGuard] 
+},
+  { 
     path: 'dashboard',
-    component: BaseLayoutComponent,
-    children: [
-      {
-        path: '',
-        component: DashboardComponent,
-      },
-      {
-        path: 'cumulative-summary',
-        component: CumulativeSummaryComponent,
-      }
-    ]
+     component: DashboardComponent 
   },
-  {
-    path: 'session',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'not-found',
-        component: NotFoundComponent,
-      }
-    ]
-  },
-  {
-    path: '**',
-    redirectTo: 'session/not-found'
-  }
+  { 
+    path: 'summary', 
+    component: CumulativeSummaryComponent 
+},
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: 'session/not-found' }
 ];

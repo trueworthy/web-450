@@ -1,27 +1,45 @@
+<html>
 <mat-toolbar class="menu" role="header" color="accent">
-        <mat-toolbar-row>
-            <button mat-button class="toolbar__icon-button mat-button">
-                <mat-icon>computer</mat-icon>
-                <span style="margin-left: 5px !important;">Node Quiz</span>
+    <mat-toolbar-row>
+        <button mat-button class="toolbar__icon-button mat-button">
+            <mat-icon>computer</mat-icon>
+            <span style="margin-left: 5px !important;">Node Quiz</span>
+        </button>
+
+        <div fxFlex></div>
+
+        <!-- User Profile -->
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>library_books</mat-icon>
+                <span>My Results</span>
             </button>
-
-            <div fxFlex></div>
-
-            <!-- User Profile -->
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>
-                    <mat-icon>library_books</mat-icon>
-                    <span>My Results</span>
-                </button>
-                <button mat-menu-item>
-                    <mat-icon>exit_to_app</mat-icon>
-                    <span>Logout</span>
-                </button>
-            </mat-menu>
-            <button [matMenuTriggerFor]="menu">
-                <mat-icon>account_circle</mat-icon>
+            <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
             </button>
-        </mat-toolbar-row>
-    </mat-toolbar>
+        </mat-menu>
+        <button [matMenuTriggerFor]="menu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
 
-    <mat-card-title>Welcome to Node Quiz!</mat-card-title>
+<mat-card-title>Welcome to Node Quiz!</mat-card-title>
+
+<div class="row">
+    <div class="column">
+        <img src="assets/slides/html-css/Slide1.jpeg" alt="HTML" style="width:100%">
+        <button href="#" >Learn HTML/CSS</button>
+    </div>
+    <div class="column">
+        <img src="assets/slides/javascript/Slide1.jpeg" alt="Java" style="width:100%">
+        <button href="#" style="color: accent">Learn Javascript</button>
+    </div>
+    <div class="column">
+        <img src="assets/slides/node/Slide1.jpeg" alt="node" style="width:100%">
+        <button href="#" style="color: accent">Learn Node</button>
+    </div>
+</div>
+
+</html>

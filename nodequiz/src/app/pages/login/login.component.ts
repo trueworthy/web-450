@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) { }
 
-
   ngOnInit() {
     this.form = this.fb.group({
       employeeId: [null, Validators.compose([Validators.required])]
@@ -30,21 +28,12 @@ export class LoginComponent implements OnInit {
     console.log(employeeId);
 
     this.http.get('/api/employees/' + employeeId).subscribe(res => {
-      if (res !== null) {
+      if (res) {
         this.cookieService.set('isAuthenticated', 'true', 1);
         this.router.navigate(['/dashboard']);
       } else {
-        this.errorMessage = 'The employee Id you entered is invalid, please try again.';
+        this.errorMessage = "The employee Id you entered is invalid, please try again.";
       }
     })
-  }}
-    /*
-    if (this.validEmployeesId) {
-      this.cookieService.set('isAuthenticated', 'true', 1);
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.errorMessage = 'The employee Id you entered is invalid, please try again.';
-    }
   }
 }
-*/

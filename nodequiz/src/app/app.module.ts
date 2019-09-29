@@ -16,9 +16,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 
 
@@ -45,9 +46,10 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from 
     MatToolbarModule,
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
   ],
-  providers: [CookieService, AuthGuard],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

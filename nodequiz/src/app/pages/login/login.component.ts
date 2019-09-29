@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
     console.log(employeeId);
 
     this.http.get('/api/employees/' + employeeId).subscribe(res => {
-      if (res) {
+      if (res !== null) {
         this.cookieService.set('isAuthenticated', 'true', 1);
         this.router.navigate(['/dashboard']);
       } else {
-        this.errorMessage = "The employee Id you entered is invalid, please try again.";
+        this.errorMessage = "Invalid, please try again.";
       }
     })
   }

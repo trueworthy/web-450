@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+
+/**
+ * Author: Lea Trueworthy
+ * Description: layout throughtout website
+ */
+
+ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-base-layout',

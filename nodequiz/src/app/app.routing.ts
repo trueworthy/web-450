@@ -7,20 +7,21 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import {AuthGuard} from './shared/guards/auth.guard';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 
-export const AppRoutes = [
+export const AppRoutes: Routes = [
   {
     path: 'dashboard',
     component: BaseLayoutComponent,
-    children: [{
-      path: ' ',
-      component: DashboardComponent,
-      canActivate: [AuthGuard]
-    },
-    {
-      path: 'cumulative-summary',
-      component: CumulativeSummaryComponent,
-      canActivate: [AuthGuard]
-    }
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+        //canActivate: [AuthGuard]
+      },
+      {
+        path: 'cumulative-summary',
+        component: CumulativeSummaryComponent,
+        canActivate: [AuthGuard]
+      }
     ]
   },
   {
@@ -39,6 +40,6 @@ export const AppRoutes = [
   },
   {
     path: '**',
-    redirectTo: 'session/login'
+    redirectTo: 'session/not-found'
   }
 ];

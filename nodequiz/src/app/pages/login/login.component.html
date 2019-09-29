@@ -1,10 +1,11 @@
-<h1>Login</h1>
 <div style="width: 50%; margin-top: 12%; margin-left: 20%;" fxLayout="column">
     <mat-card class="mat-elevation-z8">
-        <mat-card-title>Please enter Employee ID</mat-card-title>
+        <mat-card-title>Please Login Here</mat-card-title>
         <mat-card-content>
-            <small style="color: #df546a"; *ngIf="errorMessage">{{errorMessage}}<br/></small>
             <mat-card class="mat-evevation-z0" fxLayout="column" fxLayoutGap="10px">
+                    <small *ngIf="errorMessage">{{ errorMessage }}<br/></small>
+                    <small *ngIf="form.controls['employeeId'].hasError('required') && form.controls['employeeId'].touched">employee Id number is a required field</small>
+                    <small *ngIf="form.controls['employeeId'].hasError('pattern') && form.controls['employeeId'].touched">employee Id number must be an Integer value.</small>
                 <form [formGroup]="form" (ngSubmit)="login(); form.reset();" #loginForm="ngForm">
                     <mat-card-content>
                         <mat-form-field>
@@ -12,8 +13,8 @@
                         </mat-form-field>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button type="submit" fxFlex mat-raised-button color="primary">Submit</button>
-                    </mat-card-actions>
+                            <button fxFlex mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Submit</button>
+                        </mat-card-actions>
                 </form>
             </mat-card>
         </mat-card-content>

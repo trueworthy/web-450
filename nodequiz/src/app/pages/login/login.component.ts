@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      employeeId: [null, Validators.compose([Validators.required])]
+      employeeId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
     });
   }
 
@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
     console.log(employeeId);
 
     this.http.get('/api/employees/' + employeeId).subscribe(res => {
-      if (res !== null) {
+      if (res) {
         this.cookieService.set('isAuthenticated', 'true', 1);
         this.router.navigate(['/dashboard']);
       } else {
-        this.errorMessage = "Invalid, please try again.";
+        this.errorMessage = "invalid, please try again.";
       }
     })
   }

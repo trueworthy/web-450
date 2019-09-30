@@ -20,12 +20,10 @@ export const AppRoutes: Routes = [
       {
         path: '',
         component: DashboardComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'cumulative-summary',
         component: CumulativeSummaryComponent,
-        canActivate: [AuthGuard]
       }
     ]
   },

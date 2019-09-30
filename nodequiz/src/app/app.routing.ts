@@ -14,16 +14,18 @@ import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulativ
 
 export const AppRoutes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: BaseLayoutComponent,
     children: [
       {
         path: '',
         component: DashboardComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'cumulative-summary',
         component: CumulativeSummaryComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },

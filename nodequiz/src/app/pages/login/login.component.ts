@@ -1,3 +1,7 @@
+/**
+ * Author: Lea Trueworthy
+ * Description: Login page
+ */
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

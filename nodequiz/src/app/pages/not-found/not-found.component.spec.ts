@@ -1,4 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/**
+ * Author: Lea Trueworthy
+ * Description: 404 page not found
+ */
+
+ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotFoundComponent } from './not-found.component';
 

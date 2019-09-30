@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: ts
+ */
+
+ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',

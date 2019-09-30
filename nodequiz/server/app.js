@@ -41,55 +41,37 @@ app.use(morgan('dev'));
 /**
  * Get all employees
  */
-app.get('/api/employees', function (req, res, next) {
-    Employee.find({}, function (err, employees) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        } else {
-            console.log(employees);
-            res.json(employees);
-        }
-    })
+/**adding a new employee */
+app.post('/api/employees',function(req,res,next){
+  const employee={
+    employeeId:req.body.employeeId,
+    firstName:req.body.firstName,
+    lastName:req.body.lastName,
+    quizes:req.body.quizes
+  }
+Employee.create(employee,function(err,employees){
+  if(err){
+    console.log(err);
+    return next(err);
+  }else{
+    console.log(employees);
+    res.json(employees);
+  }
+})
+})
+
+app.get('/api/employees/:id', function(req, res, next) {
+  Employee.findOne({'employeeId': req.params.id}, function(err, employee) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }  else {
+      console.log(employee);
+      res.json(employee);
+    }
+  })
 });
 
-/**
- * Get employee by employeeId
- */
-app.get('/api/employees/:id', function (req, res, next) {
-    Employee.findOne({ 'employeeId': req.params.id }, function (err, employee) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        } else {
-            console.log(employee);
-            res.json(employee);
-        }
-    })
-});
-
-/**
- * Add new employee
- */
-app.post('/api/employees', function (req, res, next) {
-    const employee = {
-        employeeId: req.body.employeeId,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
-    };
-
-    Employee.create(employee, function (err, employees) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        } else {
-            console.log(employees);
-            res.json(employees);
-        }
-    });
-});
-
-// Create Node.js server
-http.createServer(app).listen(port, function () {
-    console.log(`Application started and listening on port: ${port}`)
+http.createServer(app).listen(serverPort, function() {
+  console.log(`Application started and listing on port: ${serverPort}`);
 });

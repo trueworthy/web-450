@@ -1,11 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
+/**
+ * Author: Lea Trueworthy
+ * Description: app.module
+ */
+
+ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routing';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -16,10 +22,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import { MatInputModule } from '@angular/material';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 
 
@@ -39,7 +45,6 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from 
     HttpClientModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -49,7 +54,11 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from 
     MatInputModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
   ],
-  providers: [CookieService],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    CookieService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

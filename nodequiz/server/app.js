@@ -12,6 +12,15 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 
+let app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ 'extended': false }));
+app.use(morgan('dev'));
+
+app.use(express.static(path.join(__dirname, '../dist/nodequiz')));
+app.use('/', express.static(path.join(__dirname, '../dist/nodequiz')));
+
 const serverPort = 3000; // port the application listens on
 
 // MongoDB (mLab) connection string
@@ -23,33 +32,18 @@ const connString = 'mongodb+srv://admin:admin@buwebdev-cluster-1-m4xeg.mongodb.n
 
 // MongoDB connect
 mongoose.connect(connString, { promiseLibrary: require('bluebird'), useNewUrlParser: true })
-  .then(() => console.debug('Connection to the MongoDB instance was successful'))
+  .then(() => console.debug('Connection to the MongoDB instance was successful!'))
   .catch((err) => console.debug('MongoDB Error: ' + err.message));
 
-// App configurations
-let app = express();
-
-/**
- * Setup
- * body-parser needs to be added to handle JSON post data
- */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ 'extended': 'false' }));
-app.use(morgan('dev'));
-
-// API routes
-/**
- * Get all employees
- */
-/**adding a new employee */
+/************************* API routes go below this line ********************/
 app.post('/api/employees', function (req, res, next) {
-  const employee = {
+  const employees = {
     employeeId: req.body.employeeId,
     firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    quizes: req.body.quizes
+    lastName: req.body.lastName
   };
-  Employee.create(employee, function (err, employees) {
+
+  Employee.create(employees, function (err, employees) {
     if (err) {
       console.log(err);
       return next(err);
@@ -57,21 +51,35 @@ app.post('/api/employees', function (req, res, next) {
       console.log(employees);
       res.json(employees);
     }
-  });
-});
+  })
+})
 
-app.get('/api/employees/:id', function (req, res, next) {
-  Employee.findOne({ 'employeeId': req.params.id }, function (err, employee) {
+app.get('/api/employees', function (req, res, next) {
+  Employee.find({}, function (err, employees) {
     if (err) {
       console.log(err);
       return next(err);
     } else {
-      console.log(employee);
-      res.json(employee);
+      console.log(employees);
+      res.json(employees);
     }
   })
-});
+})
 
+app.get('/api/employees/:id', function (req, res, next) {
+  Employee.findOne({ 'employeeId': req.params.id }, function (err, employees) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employees);
+      res.json(employees);
+    }
+  })
+})
+/**
+ * Creates an express server and listens on port 3000
+ */
 http.createServer(app).listen(serverPort, function () {
   console.log(`Application started and listing on port: ${serverPort}`);
 });

@@ -67,7 +67,6 @@ app.get('/api/employees', function (req, res, next) {
 })
 
 app.get('/api/employees/:id', function (req, res, next) {
-  console.log('Hello')
   Employee.findOne({ 'employeeId': req.params.id }, function (err, employees) {
     if (err) {
       console.log(err);

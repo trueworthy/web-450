@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {CarouselModule} from 'primeng/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -54,6 +55,7 @@ import { PresentationComponent } from './pages/presentation/presentation.compone
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    CarouselModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
   ],
   providers: [

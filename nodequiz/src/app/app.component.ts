@@ -22,9 +22,4 @@ export class AppComponent {
       router.navigate(["/dashboard/"]);
     }
   }
-  logout() {
-    console.log('clicked logout');
-    this.cookieService.delete('isAuthenticated');
-    this.router.navigate(["/session/login"]);
-  }
 }

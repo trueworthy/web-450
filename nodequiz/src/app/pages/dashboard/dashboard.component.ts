@@ -15,8 +15,21 @@ import { CookieService } from 'ngx-cookie-service';
 
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router, private cookie: CookieService) { }
+  prez: any;
 
+  constructor(private router: Router, private cookie: CookieService) {
+    this.prez = [
+      {id: 101, name: 'HTML', Description: 'Learn about HTML and CSS'},
+      {id: 102, name: 'Javascript', Description: 'Learn about Javascript'},
+      {id: 103, name: 'Node.js', Description: 'Learn about NODE'},
+    ];
+   }
+
+  logout() {
+    console.log('clicked logout');
+    this.cookie.delete('isAuthenticated');
+    this.router.navigate(["/session/login"]);
+  }
   ngOnInit() {
   }
 

@@ -24,7 +24,7 @@ export const AppRoutes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'presentation',
+        path: 'presentation/:id',
         component: PresentationComponent,
         canActivate: [AuthGuard]
       },

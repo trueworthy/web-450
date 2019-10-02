@@ -14,3 +14,8 @@ html {width: 100%;}
   .column button{
     padding: 3px;
   }
+
+  .row button{
+    width: 40%;
+
+  }

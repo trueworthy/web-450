@@ -1,3 +1,4 @@
+import 'hammerjs';
 /**
  * Author: Lea Trueworthy
  * Description: main.ts

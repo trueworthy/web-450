@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { PresentationComponent } from './pages/presentation/presentation.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from 
     NotFoundComponent,
     CumulativeSummaryComponent,
     AuthLayoutComponent,
+    PresentationComponent,
   ],
   imports: [
     BrowserModule,

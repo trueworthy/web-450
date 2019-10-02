@@ -3,7 +3,7 @@
  * Description: Routing pages
  */
 
- import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';

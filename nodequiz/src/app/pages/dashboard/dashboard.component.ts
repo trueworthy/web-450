@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: Home page after signed in 
+ */
+
+ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',

@@ -12,7 +12,16 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 
-const port = 3000; // port the application listens on
+let app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ 'extended': false }));
+app.use(morgan('dev'));
+
+app.use(express.static(path.join(__dirname, '../dist/nodequiz')));
+app.use('/', express.static(path.join(__dirname, '../dist/nodequiz')));
+
+const serverPort = 3000; // port the application listens on
 
 // MongoDB (mLab) connection string
 // const connString = 'mongodb://<username>:<password>@<host-name>:<port><database-name>';
@@ -23,72 +32,63 @@ const connString = 'mongodb+srv://admin:admin@buwebdev-cluster-1-m4xeg.mongodb.n
 
 // MongoDB connect
 mongoose.connect(connString, { promiseLibrary: require('bluebird'), useNewUrlParser: true })
-    .then(() => console.debug('Connection to the MongoDB instance was successful'))
-    .catch((err) => console.debug('MongoDB Error: ' + err.message));
+  .then(() => console.debug('Connection to the MongoDB instance was successful!'))
+  .catch((err) => console.debug('MongoDB Error: ' + err.message));
 
-// App configurations
-let app = express();
+/************************* API routes go below this line ********************/
+app.post('/api/employees', function (req, res, next) {
+  const employees = {
+    employeeId: req.body.employeeId,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
+  };
 
+<<<<<<< HEAD
 /**
  * Setup
  * body-parser needs to be added to handle JSON post data
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 'extended': 'false' }));
+=======
+  Employee.create(employees, function (err, employees) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employees);
+      res.json(employees);
+    }
+  })
+})
+>>>>>>> 3c6cc5e5e878e116adeebcc1f6c7915ecdf5e981
 
-// API routes
-/**
- * Get all employees
- */
 app.get('/api/employees', function (req, res, next) {
-    Employee.find({}, function (err, employees) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        } else {
-            console.log(employees);
-            res.json(employees);
-        }
-    })
-});
+  Employee.find({}, function (err, employees) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employees);
+      res.json(employees);
+    }
+  })
+})
 
-/**
- * Get employee by employeeId
- */
 app.get('/api/employees/:id', function (req, res, next) {
-    Employee.findOne({ 'employeeId': req.params.id }, function (err, employee) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        } else {
-            console.log(employee);
-            res.json(employee);
-        }
-    })
-});
-
+  Employee.findOne({ 'employeeId': req.params.id }, function (err, employees) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(employees);
+      res.json(employees);
+    }
+  })
+})
 /**
- * Add new employee
+ * Creates an express server and listens on port 3000
  */
-app.post('/api/employees', function (req, res, next) {
-    const employee = {
-        employeeId: req.body.employeeId,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
-    };
-
-    Employee.create(employee, function (err, employees) {
-        if (err) {
-            console.log(err);
-            return next(err);
-        } else {
-            console.log(employees);
-            res.json(employees);
-        }
-    });
-});
-
-// Create Node.js server
-http.createServer(app).listen(port, function () {
-    console.log(`Application started and listening on port: ${port}`)
-});
+http.createServer(app).listen(serverPort, function () {
+  console.log(`Application started and listing on port: ${serverPort}`);
+})

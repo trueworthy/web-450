@@ -1,4 +1,9 @@
-import { Routes } from '@angular/router';
+/**
+ * Author: Lea Trueworthy
+ * Description: Routing pages
+ */
+
+ import { Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -10,6 +15,7 @@ import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulativ
 export const AppRoutes: Routes = [
   {
     path: '',
+<<<<<<< HEAD
     component: AuthLayoutComponent,
     children: [
       {
@@ -20,6 +26,8 @@ export const AppRoutes: Routes = [
   },
   {
     path: 'dashboard',
+=======
+>>>>>>> 3c6cc5e5e878e116adeebcc1f6c7915ecdf5e981
     component: BaseLayoutComponent,
     children: [
       {

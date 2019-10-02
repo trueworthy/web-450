@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.cookieService.set('isAuthenticated', 'true', 1);
         this.router.navigate(['/dashboard']);
       } else {
-        this.errorMessage = "invalid, please try again.";
+        this.errorMessage = "Invalid, please try again.";
       }
     })
   }

@@ -11,15 +11,21 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import {AuthGuard} from './shared/guards/auth.guard';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
+import { PresentationComponent } from './pages/presentation/presentation.component';
 
 export const AppRoutes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: BaseLayoutComponent,
     children: [
       {
         path: '',
         component: DashboardComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'presentation',
+        component: PresentationComponent,
         canActivate: [AuthGuard]
       },
       {

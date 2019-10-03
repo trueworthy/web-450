@@ -15,18 +15,18 @@ import { CookieService } from 'ngx-cookie-service';
 
 export class DashboardComponent implements OnInit {
 
-  prez: any;
+  presentationName: string;
 
-  constructor(private router: Router, private cookie: CookieService) {
-    this.prez = [
-      {id: 101, name: 'HTML', Description: 'Learn about HTML and CSS'},
-      {id: 102, name: 'Javascript', Description: 'Learn about Javascript'},
-      {id: 103, name: 'Node.js', Description: 'Learn about NODE'},
-    ];
-   }
+  constructor(private router: Router, private cookie: CookieService) { }
+
+  goToPresentation(presentationName) {
+    this.presentationName = presentationName;
+    console.log('The presentation name is ' + this.presentationName);
+    this.router.navigate(['/dashboard/slides/' + this.presentationName]);
+  }
 
   logout() {
-    console.log('clicked logout');
+    console.log('You have logged out');
     this.cookie.delete('isAuthenticated');
     this.router.navigate(["/session/login"]);
   }

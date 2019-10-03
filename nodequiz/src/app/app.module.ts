@@ -3,17 +3,16 @@
  * Description: app.module
  */
 
- import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CarouselModule} from 'primeng/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
+import { CarouselModule } from 'primeng/carousel';
 
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
@@ -29,7 +28,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { PresentationComponent } from './pages/presentation/presentation.component';
-
+import { PresentationService } from './pages/presentation/presentation.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +46,7 @@ import { PresentationComponent } from './pages/presentation/presentation.compone
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
@@ -56,13 +56,11 @@ import { PresentationComponent } from './pages/presentation/presentation.compone
     MatFormFieldModule,
     MatInputModule,
     CarouselModule,
-    RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     CookieService,
-    AuthGuard
-  ],
+    AuthGuard, PresentationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

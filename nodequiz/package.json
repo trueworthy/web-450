@@ -30,6 +30,7 @@
     "mongoose": "^5.7.1",
     "morgan": "^1.9.1",
     "ngx-cookie-service": "^2.2.0",
+    "primeicons": "^2.0.0",
     "primeng": "^8.0.3",
     "rxjs": "~6.4.0",
     "serve-favicon": "^2.5.0",

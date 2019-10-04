@@ -24,12 +24,6 @@ export class DashboardComponent implements OnInit {
     console.log('The presentation name is ' + this.presentationName);
     this.router.navigate(['/dashboard/slides/' + this.presentationName]);
   }
-
-  logout() {
-    console.log('You have logged out');
-    this.cookie.delete('isAuthenticated');
-    this.router.navigate(["/session/login"]);
-  }
   ngOnInit() {
   }
 

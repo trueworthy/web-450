@@ -9,9 +9,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import {AuthGuard} from './shared/guards/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 import { PresentationComponent } from './pages/presentation/presentation.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
 export const AppRoutes: Routes = [
   {
@@ -26,6 +27,11 @@ export const AppRoutes: Routes = [
       {
         path: 'slides/:name',
         component: PresentationComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'questions/:id',
+        component: QuizComponent,
         canActivate: [AuthGuard]
       },
       {

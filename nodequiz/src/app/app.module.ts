@@ -29,6 +29,9 @@ import { MatInputModule } from '@angular/material';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { PresentationComponent } from './pages/presentation/presentation.component';
 import { PresentationService } from './pages/presentation/presentation.service';
+import { HeaderComponent } from './shared/header/header.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
+import { QuizService } from './pages/quiz/quiz.service'
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { PresentationService } from './pages/presentation/presentation.service';
     CumulativeSummaryComponent,
     AuthLayoutComponent,
     PresentationComponent,
+    HeaderComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,8 @@ import { PresentationService } from './pages/presentation/presentation.service';
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     CookieService,
-    AuthGuard, PresentationService],
+    AuthGuard, PresentationService,
+    QuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

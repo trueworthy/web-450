@@ -16,12 +16,14 @@ export class QuizComponent implements OnInit {
   quizzes: any;
   quizId: number;
   answers: boolean;
+  quizNameFromUrl: string;
 
   constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, private quizService: QuizService) {
     this.quizId = parseInt(this.route.snapshot.paramMap.get('quizId'), 10);
     this.quizService.getQuiz().subscribe(res => {
       this.quizzes = res;
       this.quiz = this.quizzes.filter(p => p.name === this.quizId)[0];
+      this.quizNameFromUrl = route.snapshot.paramMap.get('id');  QuizName: {{this.quizNameFromUrl}}
 
       console.log(this.quizzes);
       console.log(this.quiz);

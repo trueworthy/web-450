@@ -28,6 +28,7 @@ export class PresentationComponent implements OnInit {
   }
   goToQuiz(quizId) {
     this.quizId = quizId;
+    console.log('quizName');
     console.log('Quiz: ' + this.quizId);
     this.router.navigate(['/dashboard/questions/' + this.quizId]);
   }

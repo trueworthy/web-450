@@ -1,22 +1,23 @@
 <mat-toolbar class="menu" role="header" color="primary">
-        <mat-toolbar-row>
-                <mat-icon>computer</mat-icon>
-                <span style="margin-left: 5px !important;">Node Quiz</span>
-            <div fxFlex></div>
-    
-            <!-- User Profile -->
-            <button [matMenuTriggerFor]="menu" mat-icon-button> 
-                <mat-icon>account_circle</mat-icon> 
+    <mat-toolbar-row>
+        <mat-icon>computer</mat-icon>
+
+        <span style="margin-left: 5px !important;">Node Quiz</span>
+        <div fxFlex></div>
+
+        <!-- User Profile -->
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>library_books</mat-icon>
+                <span>My Results</span>
             </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>
-                    <mat-icon>library_books</mat-icon>
-                    <span>My Results</span>
-                </button>
-                <button mat-menu-item (click)="logout()">
-                    <mat-icon>exit_to_app</mat-icon>
-                    <span>Logout</span>
-                </button>
-            </mat-menu>
-        </mat-toolbar-row>
-    </mat-toolbar>
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

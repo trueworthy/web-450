@@ -29,7 +29,7 @@ export class PresentationComponent implements OnInit {
   goToQuiz(quizName) {
     this.quizName = quizName;
     console.log('Quiz: ' + this.quizName);
-    this.router.navigate(['/dashboard/questions/' + this.quizName]);
+    this.router.navigate(['/dashboard/questions/quizId' + this.quizName]);
   }
 
   ngOnInit() {

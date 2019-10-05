@@ -1,44 +1,109 @@
 [
     {
-        "quizId": "101",
+        "quizId": "100",
         "name": "html-css",
+        "description": "This quiz is a soft introduction into the world of HTMl and CSS.",
         "questions": [
-            { "name": "question1" },
-            { "name": "Slide2" },
-            { "name": "Slide3" },
-            { "name": "Slide4" },
-            { "name": "Slide5" },
-            { "name": "Slide6" },
-            { "name": "Slide7" },
-            { "name": "Slide8" },
-            { "name": "Slide9" },
-            { "name": "Slide10" },
-            { "name": "Slide11" },
-            { "name": "Slide12" },
-            { "name": "Slide13" },
-            { "name": "Slide14" },
-            { "name": "Slide15" },
-            { "name": "Slide16" }
+            {
+                "id": "1",
+                "ask": "What does CSS stand for and what is it used for?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "ask": "ajkfhak",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.2",
+                        "ask": "Cascading Style Sheets",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "1.3",
+                        "ask": "Cat Style Sheet",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.4",
+                        "ask": "ajkfhak",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "ask": "What does CSS stand for and what is it used for?",
+                "answers": [
+                    {
+                        "id": "2.1",
+                        "ask": "ajkfhak",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.2",
+                        "ask": "Cascading Style Sheets",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "2.3",
+                        "ask": "Cat Style Sheet",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.4",
+                        "ask": "ajkfhak",
+                        "isCorrect": false
+                    }
+                ]
+            }
         ]
     },
     {
         "quizId": "102",
         "name": "javascript",
         "questions": [
-            { "name": "Slide1" },
-            { "name": "Slide2" },
-            { "name": "Slide3" },
-            { "name": "Slide4" },
-            { "name": "Slide5" },
-            { "name": "Slide6" },
-            { "name": "Slide7" },
-            { "name": "Slide8" },
-            { "name": "Slide9" },
-            { "name": "Slide10" },
-            { "name": "Slide11" },
-            { "name": "Slide12" },
-            { "name": "Slide13" },
-            { "name": "Slide14" }
+            {
+                "name": "Slide1"
+            },
+            {
+                "name": "Slide2"
+            },
+            {
+                "name": "Slide3"
+            },
+            {
+                "name": "Slide4"
+            },
+            {
+                "name": "Slide5"
+            },
+            {
+                "name": "Slide6"
+            },
+            {
+                "name": "Slide7"
+            },
+            {
+                "name": "Slide8"
+            },
+            {
+                "name": "Slide9"
+            },
+            {
+                "name": "Slide10"
+            },
+            {
+                "name": "Slide11"
+            },
+            {
+                "name": "Slide12"
+            },
+            {
+                "name": "Slide13"
+            },
+            {
+                "name": "Slide14"
+            }
         ]
     }
 ]

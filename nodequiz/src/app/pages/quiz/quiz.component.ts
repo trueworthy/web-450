@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {QuizService } from './quiz.service';
+import { QuizService } from './quiz.service';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-quiz',
@@ -11,25 +12,27 @@ import { Observable } from 'rxjs';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  questions: any;
+  quiz: any;
   quizzes: any;
-  quizName: string;
+  quizId: number;
+  answers: boolean;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient,
-              private quizService: QuizService) {
-    this.quizName = route.snapshot.paramMap.get('name');
-    this.quizService.getQuiz()
-    .subscribe(res => {
+  constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, private quizService: QuizService) {
+    this.quizId = parseInt(this.route.snapshot.paramMap.get('quizId'), 10);
+    this.quizService.getQuiz().subscribe(res => {
       this.quizzes = res;
+      this.quiz = this.quizzes.filter(p => p.name === this.quizId)[0];
+
       console.log(this.quizzes);
-      this.questions = this.quizzes.filter(p => p.name === this.quizName)[0].id;
-      console.log(this.questions);
+      console.log(this.quiz);
     })
   }
-
-
   ngOnInit() {
 
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

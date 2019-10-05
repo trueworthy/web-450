@@ -1,7 +1,29 @@
+<div>
+    <p>quiz works!</p>
 
-<app-header></app-header>
+    <mat-card-title>{{ presentationName }}</mat-card-title>
+    <br>
+    {{quiz.name}}
+    <br>
+    {{quiz.description}}
+    <br>
+    <p>Questions</p>
+    <p>{{questions.ask}}</p>
 
-<p>quiz works!</p>
+    <p>Answers: </p>
+    <div fxLayout="column" fxLayoutGap="10px">
+        <mat-radio-group style="display: inline-flex; flex-direction: column;">
+            <mat-radio-button style="padding: 5px" *ngFor="let answers of questions['answers']" [value]="answers.id">
+                {{answers.ask}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <br>
+    <button fxFlex mat-raised-button color="accent">Submit</button>
 
-<mat-card-title>{{ presentationName }}</mat-card-title>
-<mat-card-title>{{ quizName }}</mat-card-title>
+
+    <br><br><br>
+    <div fxFlex fxLayoutAlign="end" style="width: 50%">
+        <button mat-button (click)="goBack()">Back</button>
+    </div>
+</div>

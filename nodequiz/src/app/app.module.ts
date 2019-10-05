@@ -25,8 +25,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
-import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatInputModule, MatRadioModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule, MatListModule } from '@angular/material';
 import { PresentationComponent } from './pages/presentation/presentation.component';
 import { PresentationService } from './pages/presentation/presentation.service';
 import { HeaderComponent } from './shared/header/header.component';
@@ -60,6 +60,8 @@ import { QuizService } from './pages/quiz/quiz.service'
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
+    MatRadioModule,
     CarouselModule,
   ],
   providers: [

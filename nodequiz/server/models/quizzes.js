@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 let quizSchema = mongoose.Schema({
-  quizId: {type: Number, required: true},
+  quizId: String,
   quizName: String,
   quizDescription: String,
   answers: String,

@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
-const Quiz = require('./models/quiz')
+const Quiz = require('./models/quizzes')
 
 let app = express();
 

@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -8,11 +9,17 @@ import { HttpClient } from '@angular/common/http';
 export class QuizService { 
 
     quizName: string;
+    quizId: number;
     quizzes: any;
-    questions: any;
+    questions: string;
+    answers: string;
 
-constructor(private http: HttpClient) {
-
+constructor(private http: HttpClient, router: Router) {
+  this.quizzes = [
+    { id: 1, name: "HTML" },
+    { id: 2, name: "JavaScript" },
+    { id: 3, name: "Node" }
+  ]
   }
 
   getQuizzes() {

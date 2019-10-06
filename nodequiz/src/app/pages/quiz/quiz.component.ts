@@ -17,7 +17,7 @@ export class QuizComponent implements OnInit {
   quiz: any;
   questions: any;
   //quizName: string;
-  answers: boolean;
+  answers: string;
   quizNameFromUrl: string;
 
   constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, private quizService: QuizService) {
@@ -25,7 +25,7 @@ export class QuizComponent implements OnInit {
 
     this.quizService.getQuizzes().subscribe(res => {
       this.quizzes = res;
-      this.quiz = this.quizzes.filter(q => q.quizId === this.quizId)[0];
+      this.quiz = this.quizzes.filter(q => q.quizId === this.quizId)[0].questions;
       //this.quizNameFromUrl = route.snapshot.paramMap.get('id');  quizName: {{this.quizNameFromUrl}}
 
       console.log(this.quizzes);

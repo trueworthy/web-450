@@ -1,31 +1,48 @@
-<app-header></app-header>
-
-<div>
-    <p>quiz works!</p>
-
-    <mat-card-title>{{ presentationName }}</mat-card-title>
-    <br>
-    {{quiz.name}}
-    <br>
-    {{quiz.description}}
-    <br>
-    <p>Questions</p>
-    <p>{{questions.ask}}</p>
-
-    <p>Answers: </p>
-    <div fxLayout="column" fxLayoutGap="10px">
-        <mat-radio-group style="display: inline-flex; flex-direction: column;">
-            <mat-radio-button style="padding: 5px" *ngFor="let answers of questions['answers']" [value]="answers.id">
-                {{answers.ask}}
-            </mat-radio-button>
-        </mat-radio-group>
+<div fxLayout="column" style="margin-top: 5%; margin-left: 10%; width: 60%;">
+        <mat-card-content *ngIf="quizId.questions">
+            <div fxLayout="column">
+                <div *ngFor="let question of quizId.questions">
+                    <mat-card class="mat-elevation-z8">
+                        <mat-card-content>
+                        <div fxLayout="column">
+                            <mat-list>
+                                <div fxLayout="row" fxLayoutGap="10px">
+                                    <p>Questions</p>
+                                    <p>{{question.text}}</p>
+                                </div>
+                            </mat-list>
+                            <br>
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <p>Answers: </p>
+                                <div fxLayout="column" fxLayoutGap="10px">
+                                    <mat-radio-group >
+                                        <mat-radio-button style="padding: 5px" *ngFor="let answer of question['answers']" [value]="answers.id">
+                                            {{Answers.text}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
     </div>
-    <br>
-    <button fxFlex mat-raised-button color="accent">Submit</button>
 
+<mat-card-content>
+    <button fxFlex mat-raised-button color="primary">Submit</button>
+</mat-card-content>
 
-    <br><br><br>
-    <div fxFlex fxLayoutAlign="end" style="width: 50%">
-        <button mat-button (click)="goBack()">Back</button>
-    </div>
+<p>Answers: </p>
+<mat-radio-group style="display: inline-flex; flex-direction: column;">
+    <mat-radio-button style="padding: 5px" *ngFor="let answers of questions['answers']" [value]="answers.id">
+        {{answers.ask}}
+    </mat-radio-button>
+</mat-radio-group>
+<br>
+
+<br>
+<div fxFlex fxLayoutAlign="end" style="width: 50%">
+    <button mat-button (click)="goBack()">Back</button>
 </div>

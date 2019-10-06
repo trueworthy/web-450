@@ -15,7 +15,7 @@ constructor(private http: HttpClient) {
 
   }
 
-  getQuiz() {
+  getQuizzes() {
     return this.http.get('./assets/questions.json');
   }
 }

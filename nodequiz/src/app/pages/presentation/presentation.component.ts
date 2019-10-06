@@ -14,6 +14,7 @@ export class PresentationComponent implements OnInit {
   presentations: any;
   presentationName: string;
   quizId: any;
+  quizName: string;
 
   constructor(private route: ActivatedRoute, private http: HttpClient,
               private presentationService: PresentationService, private router: Router,) {
@@ -26,11 +27,11 @@ export class PresentationComponent implements OnInit {
       console.log(this.images);
     })
   }
-  goToQuiz(quizId) {
-    this.quizId = quizId;
+  goToQuiz(quizName) {
+    this.quizName = quizName;
     console.log('quizName');
-    console.log('Quiz: ' + this.quizId);
-    this.router.navigate(['/dashboard/questions/' + this.quizId]);
+    console.log('Quiz: ' + this.quizName);
+    this.router.navigate(['/dashboard/questions/' + this.quizName]);
   }
 
   ngOnInit() {

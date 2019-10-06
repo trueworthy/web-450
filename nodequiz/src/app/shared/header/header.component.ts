@@ -18,5 +18,7 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  navHome() {
+    this.router.navigate(["/dashboard"]);
+  }
 }

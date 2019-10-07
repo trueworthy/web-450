@@ -95,7 +95,7 @@
         "questions": [
             {
                 "id": "1",
-                "text": "how does node cost?",
+                "text": "How much does node cost?",
                 "answers": [
                     {
                         "id": "1.1",

@@ -1,14 +1,14 @@
 <div fxLayout="column" style="margin-top: 5%; margin-left: 10%; width: 60%;">
-        <mat-card-content *ngIf="quizId.Questions">
+        <mat-card-content *ngIf="questions">
             <div fxLayout="column">
-                <div *ngFor="let question of quizId.Questions">
+                <div *ngFor= "let question of questions">
                     <mat-card class="mat-elevation-z8">
                         <mat-card-content>
                         <div fxLayout="column">
                             <mat-list>
                                 <div fxLayout="row" fxLayoutGap="10px">
                                     <p>Questions</p>
-                                    <p>{{Question.text}}</p>
+                                    <p>{{question.text}}</p>
                                 </div>
                             </mat-list>
                             <br>
@@ -16,8 +16,8 @@
                                 <p>Answers: </p>
                                 <div fxLayout="column" fxLayoutGap="10px">
                                     <mat-radio-group >
-                                        <mat-radio-button style="padding: 5px" *ngFor="let answer of question['answers']" [value]="Answer.id">
-                                            {{Answers.text}}
+                                        <mat-radio-button style="padding: 5px" *ngFor= "let answer of question.answers">
+                                            {{answer.text}}
                                         </mat-radio-button>
                                     </mat-radio-group>
                                 </div>
@@ -30,18 +30,18 @@
         </mat-card-content>
     </div>
 
-<mat-card-content>
+    <mat-card-actions>
     <button fxFlex mat-raised-button color="primary">Submit</button>
-</mat-card-content>
+    </mat-card-actions>
 
-<p>Answers: </p>
+<!--<p>Answers: </p>
 <mat-radio-group style="display: inline-flex; flex-direction: column;">
     <mat-radio-button style="padding: 5px" *ngFor="let answers of questions['Answers']" [value]="Answers.id">
         {{Answer.ask}}
     </mat-radio-button>
 </mat-radio-group>
 <br>
-
+-->
 <br>
 <div fxFlex fxLayoutAlign="end" style="width: 50%">
     <button mat-button (click)="goBack()">Back</button>

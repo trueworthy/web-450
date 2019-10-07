@@ -1,127 +1,125 @@
-{
-    "quizId": [
-        {
-            "quizId": "101",
-            "name": "html-css",
-            "description": "This quiz is a soft introduction into the world of HTMl and CSS.",
-            "questions": [
-                {
-                    "id": "1",
-                    "text": "What does CSS stand for and what is it used for?",
-                    "answers": [
-                        {
-                            "id": "1.1",
-                            "text": "ajkfhak",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "1.2",
-                            "text": "Cascading Style Sheets",
-                            "isCorrect": true
-                        },
-                        {
-                            "id": "1.3",
-                            "text": "Cat Style Sheet",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "1.4",
-                            "text": "ajkfhak",
-                            "isCorrect": false
-                        }
-                    ]
-                },
-                {
-                    "id": "2",
-                    "text": "What does CSS stand for and what is it used for?",
-                    "answers": [
-                        {
-                            "id": "2.1",
-                            "text": "ajkfhak",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "2.2",
-                            "text": "Cascading Style Sheets",
-                            "isCorrect": true
-                        },
-                        {
-                            "id": "2.3",
-                            "text": "Cat Style Sheet",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "2.4",
-                            "text": "ajkfhak",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "quizId": "102",
-            "name": "javascript",
-            "questions": [
-                {
-                    "id": "1",
-                    "text": "what is a String?",
-                    "answers": [
-                        {
-                            "id": "1.1",
-                            "text": "A character inside single quotes",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "1.2",
-                            "text": "Cascading Style Sheets",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "1.3",
-                            "text": "zero or more characters written inside double or single quotes",
-                            "isCorrect": true
-                        },
-                        {
-                            "id": "1.4",
-                            "text": "ajkfhak",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "quizId": "103",
-            "name": "Node",
-            "questions": [
-                {
-                    "id": "1",
-                    "text": "How much does Node cost?",
-                    "answers": [
-                        {
-                            "id": "1.1",
-                            "text": "Free!",
-                            "isCorrect": true
-                        },
-                        {
-                            "id": "1.2",
-                            "text": "One billion dollars",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "1.3",
-                            "text": "39.99",
-                            "isCorrect": false
-                        },
-                        {
-                            "id": "1.4",
-                            "text": "5.99",
-                            "isCorrect": false
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
+[
+    {    "quizId": "101",   
+         "name": "html-css",  
+           "description": "....",    
+           "questions": [
+            {
+                "id": "1",
+                "text": "What does CSS stand for and what is it used for?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "text": "ajkfhak",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.2",
+                        "text": "Cascading Style Sheets",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "1.3",
+                        "text": "Cat Style Sheet",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.4",
+                        "text": "ajkfhak",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "text": "What does CSS stand for and what is it used for?",
+                "answers": [
+                    {
+                        "id": "2.1",
+                        "text": "ajkfhak",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.2",
+                        "text": "Cascading Style Sheets",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "2.3",
+                        "text": "Cat Style Sheet",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "2.4",
+                        "text": "ajkfhak",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "quizId": "102",
+        "name": "javascript",
+        "questions": [
+            {
+                "id": "1",
+                "text": "what is a String?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "text": "A character inside single quotes",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.2",
+                        "text": "Cascading Style Sheets",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.3",
+                        "text": "zero or more characters written inside double or single quotes",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "1.4",
+                        "text": "ajkfhak",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "quizId": "103",
+        "name": "node",
+        "questions": [
+            {
+                "id": "1",
+                "text": "how does node cost?",
+                "answers": [
+                    {
+                        "id": "1.1",
+                        "text": "free",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "1.2",
+                        "text": "$99",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.3",
+                        "text": "5.99",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "1.4",
+                        "text": "1,000,000",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    }
+
+]

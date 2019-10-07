@@ -16,7 +16,7 @@ export class QuizService {
 
 constructor(private http: HttpClient) {
   this.quizzes = [
-    { id: 101, name: "HTML" },
+    { id: 101, name: "html-css" },
     { id: 102, name: "JavaScript" },
     { id: 103, name: "Node" }
   ]

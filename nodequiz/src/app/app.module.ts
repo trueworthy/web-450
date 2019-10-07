@@ -1,6 +1,6 @@
 /**
  * Author: Lea Trueworthy
- * Description: app.module
+ * Description: app.module: elements for whole website
  */
 
 import { BrowserModule } from '@angular/platform-browser';

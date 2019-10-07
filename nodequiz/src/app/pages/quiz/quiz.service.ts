@@ -14,13 +14,13 @@ export class QuizService {
     questions: string;
     answers: string;
 
-constructor(private http: HttpClient, router: Router) {
+constructor(private http: HttpClient) {
   this.quizzes = [
-    { id: 1, name: "HTML" },
-    { id: 2, name: "JavaScript" },
-    { id: 3, name: "Node" }
+    { id: 101, name: "HTML" },
+    { id: 102, name: "JavaScript" },
+    { id: 103, name: "Node" }
   ]
-  }
+}
 
   getQuizzes() {
     return this.http.get('./assets/questions.json');

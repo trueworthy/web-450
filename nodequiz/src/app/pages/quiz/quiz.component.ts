@@ -12,7 +12,7 @@ import { Location } from '@angular/common'
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  quizId: number;
+  quizId: string;
   quizzes: any;
   quiz: any;
   questions: any;
@@ -21,7 +21,7 @@ export class QuizComponent implements OnInit {
   quizNameFromUrl: string;
 
   constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, private quizService: QuizService) {
-    this.quizId = parseInt(this.route.snapshot.paramMap.get('quizId'), 10);
+    this.quizId = (this.route.snapshot.paramMap.get('id'));
 
     this.quizService.getQuizzes().subscribe(res => {
       this.quizzes = res;

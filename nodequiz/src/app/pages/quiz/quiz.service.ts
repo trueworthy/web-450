@@ -1,5 +1,10 @@
 
-import { Injectable } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: routing for quiz page to questions
+ */
+
+ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 

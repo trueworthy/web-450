@@ -1,6 +1,6 @@
 /**
  * Author: Lea Trueworthy
- * Description: Routing pages
+ * Description: routing for website to each page
  */
 
 import { Routes } from '@angular/router';

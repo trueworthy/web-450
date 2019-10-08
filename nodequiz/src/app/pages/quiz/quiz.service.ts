@@ -19,7 +19,7 @@ export class QuizService {
     questions: string;
     answers: string;
 
-constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   this.quizzes = [
     { id: 101, name: "html-css" },
     { id: 102, name: "JavaScript" },
@@ -29,5 +29,13 @@ constructor(private http: HttpClient) {
 
   getQuizzes() {
     return this.http.get('./assets/questions.json');
+  }
+  user : any;
+
+  goToResults(user) {
+    this.user = user;
+    console.log('user');
+    console.log('Score: ' + this.user);
+    this.router.navigate(['/dashboard/questions/' + this.user]);
   }
 }

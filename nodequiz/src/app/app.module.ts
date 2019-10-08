@@ -31,7 +31,8 @@ import { PresentationComponent } from './pages/presentation/presentation.compone
 import { PresentationService } from './pages/presentation/presentation.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
-import { QuizService } from './pages/quiz/quiz.service'
+import { QuizService } from './pages/quiz/quiz.service';
+import { ResultsComponent } from './pages/results/results.component'
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { QuizService } from './pages/quiz/quiz.service'
     PresentationComponent,
     HeaderComponent,
     QuizComponent,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,

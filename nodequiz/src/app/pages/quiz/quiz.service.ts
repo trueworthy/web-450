@@ -30,7 +30,7 @@ export class QuizService {
   getQuizzes() {
     return this.http.get('./assets/questions.json');
   }
-  user : any;
+  user : string;
 
   goToResults(user) {
     this.user = user;

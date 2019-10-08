@@ -13,6 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
+import {RadioButtonModule} from 'primeng/radiobutton';
+//import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
@@ -65,6 +67,7 @@ import { ResultsComponent } from './pages/results/results.component'
     MatListModule,
     MatRadioModule,
     CarouselModule,
+    RadioButtonModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

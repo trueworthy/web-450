@@ -1,4 +1,9 @@
-export * from './base-layout/base-layout.component';
+/**
+ * Author: Lea Trueworthy
+ * Description: helping in route
+ */
+
+ export * from './base-layout/base-layout.component';
 export * from './auth-layout/auth-layout.component';
 export * from './../pages/dashboard/dashboard.component';
 export * from './../pages/login/login.component';

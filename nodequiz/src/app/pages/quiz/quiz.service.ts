@@ -1,5 +1,10 @@
 
-import { Injectable } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: routing for quiz page to questions
+ */
+
+ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -14,9 +19,9 @@ export class QuizService {
     questions: string;
     answers: string;
 
-constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   this.quizzes = [
-    { id: 101, name: "HTML" },
+    { id: 101, name: "html-css" },
     { id: 102, name: "JavaScript" },
     { id: 103, name: "Node" }
   ]
@@ -24,5 +29,13 @@ constructor(private http: HttpClient) {
 
   getQuizzes() {
     return this.http.get('./assets/questions.json');
+  }
+  user : string;
+
+  goToResults(user) {
+    this.user = user;
+    console.log('user');
+    console.log('Score: ' + this.user);
+    this.router.navigate(['/dashboard/questions/' + this.user]);
   }
 }

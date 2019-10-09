@@ -1,3 +1,9 @@
 .ui-carousel-mobiledropdown .ui-widget .ui-state-default .ui-corner-left .ng-star-inserted {
  display: block;
 }
+
+button{
+    width: 100%  !important;
+    font-size: 25px !important;
+    text-align: center  !important;
+}

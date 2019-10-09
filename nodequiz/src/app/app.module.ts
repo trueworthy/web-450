@@ -1,6 +1,6 @@
 /**
  * Author: Lea Trueworthy
- * Description: app.module
+ * Description: app.module: elements for whole website
  */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
+import {RadioButtonModule} from 'primeng/radiobutton';
+//import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
@@ -31,7 +33,8 @@ import { PresentationComponent } from './pages/presentation/presentation.compone
 import { PresentationService } from './pages/presentation/presentation.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
-import { QuizService } from './pages/quiz/quiz.service'
+import { QuizService } from './pages/quiz/quiz.service';
+import { ResultsComponent } from './pages/results/results.component'
 
 @NgModule({
   declarations: [
@@ -45,12 +48,14 @@ import { QuizService } from './pages/quiz/quiz.service'
     PresentationComponent,
     HeaderComponent,
     QuizComponent,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    FormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
     ReactiveFormsModule,
     MatButtonModule,
@@ -63,6 +68,7 @@ import { QuizService } from './pages/quiz/quiz.service'
     MatListModule,
     MatRadioModule,
     CarouselModule,
+    RadioButtonModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

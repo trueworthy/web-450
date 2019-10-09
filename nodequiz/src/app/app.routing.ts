@@ -1,6 +1,6 @@
 /**
  * Author: Lea Trueworthy
- * Description: Routing pages
+ * Description: routing for website to each page
  */
 
 import { Routes } from '@angular/router';
@@ -13,6 +13,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { CumulativeSummaryComponent } from './pages/cumulative-summary/cumulative-summary.component';
 import { PresentationComponent } from './pages/presentation/presentation.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { ResultsComponent } from './pages/results/results.component';
 
 export const AppRoutes: Routes = [
   {
@@ -32,6 +33,11 @@ export const AppRoutes: Routes = [
       {
         path: 'questions/:id',
         component: QuizComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'user/:id',
+        component: ResultsComponent,
         canActivate: [AuthGuard]
       },
       {

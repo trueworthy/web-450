@@ -1,5 +1,10 @@
 
-import { Injectable } from '@angular/core';
+/**
+ * Author: Lea Trueworthy
+ * Description: Presentation guide
+ */
+
+ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

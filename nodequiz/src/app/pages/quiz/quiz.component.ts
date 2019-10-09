@@ -1,4 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+/**
+ * Author: Lea Trueworthy
+ * Description: Quiz page guide
+ */
+
+ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from './quiz.service';
@@ -25,7 +30,7 @@ export class QuizComponent implements OnInit {
 
     this.quizService.getQuizzes().subscribe(res => {
       this.quizzes = res;
-      this.quiz = this.quizzes.filter(q => q.quizId === this.quizId)[0].questions;
+      this.questions = this.quizzes.filter(q => q.name === this.quizId)[0].questions;
       //this.quizNameFromUrl = route.snapshot.paramMap.get('id');  quizName: {{this.quizNameFromUrl}}
 
       console.log(this.quizzes);

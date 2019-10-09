@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.errorMessage = "Invalid, please try again.";
       }
-    })
+    }
+    )
   }
 }

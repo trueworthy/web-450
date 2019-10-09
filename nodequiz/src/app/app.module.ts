@@ -55,6 +55,7 @@ import { ResultsComponent } from './pages/results/results.component'
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    FormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true, enableTracing: false }),
     ReactiveFormsModule,
     MatButtonModule,

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if (res) {
         this.cookieService.set('isAuthenticated', 'true', 1);
         this.cookieService.set('employeeId', employeeId)
-        this.cookieValue = this.cookieService.get('employeeId')
+        this.cookieValue = this.cookieService.get('employeeId') 
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = "Invalid, please try again.";

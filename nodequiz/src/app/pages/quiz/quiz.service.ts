@@ -14,7 +14,9 @@ import { Router } from '@angular/router';
 export class QuizService { 
 
     quizName: string;
+    employeeId: number;
     quizId: number;
+    quizResults: any;
     quizzes: any;
     questions: string;
     answers: string;
@@ -30,12 +32,20 @@ export class QuizService {
   getQuizzes() {
     return this.http.get('./assets/questions.json');
   }
+
+  onSubmit(form){
+    this.quizResults = form;
+    this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
+  }
+  
+  /*
   user : string;
 
-  goToResults(user) {
-    this.user = user;
+  goToResults(employeeId) {
+    this.user = employeeId;
     console.log('user');
     console.log('Score: ' + this.user);
     this.router.navigate(['/dashboard/questions/' + this.user]);
-  }
+  }*/
+
 }

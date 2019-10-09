@@ -14,11 +14,11 @@
                             </mat-list>
                             <br>
                             <div fxLayout="row" fxLayoutGap="10px">
-                                <p>Answers: </p>
+                                <label>Answers:</label>
                                 <div fxLayout="column" fxLayoutGap="10px">
                                    
                                         <div *ngFor= "let answer of question.answers" style="flex-direction: column;">
-                                          <input [(ngModel)]="question[question.id]" [checked]="id" name="({question.id})" type="radio" />
+                                          <input [(ngModel)]="questions[question.id]" [checked]="questions[question.id]" value="{{answer.id}};{{answer.isCorrect}}" name="question{{question.id}}" type="radio" />
                                             {{answer.text}}
                                         </div>
                                 </div>
@@ -32,8 +32,9 @@
         </mat-card-content>
     </div>
 
+
     <mat-card-actions>
-        <button type="submit" color="primary" mat-button (click)="goToResults(user)">Submit</button>
+        <button type="submit" fxFlex mat-raised-button color="primary">Submit</button>
         </mat-card-actions>
 
 <!--<p>Answers: </p>

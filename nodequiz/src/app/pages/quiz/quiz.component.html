@@ -1,41 +1,43 @@
 <div fxLayout="column" style="margin-top: 5%; margin-left: 15%; width: 70%;">
-        <mat-card-content *ngIf="questions">
-            <div fxLayout="column">
-                <form>
-                <div *ngFor= "let question of questions">
+    <mat-card-content *ngIf="questions">
+        <div fxLayout="column">
+            <form>
+                <div *ngFor="let question of questions">
                     <mat-card class="mat-elevation-z8">
                         <mat-card-content>
-                        <div fxLayout="column">
-                            <mat-list>
+                            <div fxLayout="column">
+                                <mat-list>
+                                    <div fxLayout="row" fxLayoutGap="10px">
+                                        <!--    <p>Questions</p> -->
+                                        <p>{{question.text}}</p>
+                                    </div>
+                                </mat-list>
+                                <br>
                                 <div fxLayout="row" fxLayoutGap="10px">
-                                 <!--    <p>Questions</p> -->
-                                    <p>{{question.text}}</p>
-                                </div>
-                            </mat-list>
-                            <br>
-                            <div fxLayout="row" fxLayoutGap="10px">
-                                <label>Answers:</label>
-                                <div fxLayout="column" fxLayoutGap="10px">
-                                   
-                                        <div *ngFor= "let answer of question.answers" style="flex-direction: column;">
-                                          <input [(ngModel)]="questions[question.id]" [checked]="questions[question.id]" value="{{answer.id}};{{answer.isCorrect}}" name="question{{question.id}}" type="radio" />
+                                    <label>Answers:</label>
+                                    <div fxLayout="column" fxLayoutGap="10px">
+
+                                        <div *ngFor="let answer of question.answers" style="flex-direction: column;">
+                                            <input [(ngModel)]="qs[question.id]" [checked]="qs[question.id]"
+                                                [value]="{{answer.id}};{{answer.isCorrect}}" name="q{{question.id}}"
+                                                type="radio" />
                                             {{answer.text}}
                                         </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </mat-card-content>
+                        </mat-card-content>
                     </mat-card>
                 </div>
-                </form>
-            </div>
-        </mat-card-content>
-    </div>
+            </form>
+        </div>
+    </mat-card-content>
+</div>
 
 
-    <mat-card-actions>
-        <button type="submit" fxFlex mat-raised-button color="primary">Submit</button>
-        </mat-card-actions>
+<mat-card-actions>
+    <button type="submit" fxFlex mat-raised-button color="primary">Submit</button>
+</mat-card-actions>
 
 <!--<p>Answers: </p>
 <mat-radio-group style="display: inline-flex; flex-direction: column;">

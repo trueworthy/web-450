@@ -24,6 +24,8 @@ export class QuizComponent implements OnInit {
   //quizName: string;
   answers: string;
   quizNameFromUrl: string;
+  q: any = [];
+  qs: any = [];
 
   constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, private quizService: QuizService) {
     this.quizId = (this.route.snapshot.paramMap.get('id'));

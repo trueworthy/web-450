@@ -3,12 +3,13 @@
  * Description: Quiz page guide
  */
 
- import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from './quiz.service';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Location } from '@angular/common'
 
 @Component({
@@ -27,7 +28,7 @@ export class QuizComponent implements OnInit {
   q: any = [];
   qs: any = [];
 
-  constructor(private route: ActivatedRoute, private location: Location, private http: HttpClient, private quizService: QuizService) {
+  constructor(private route: ActivatedRoute, private location: Location, private dialog: MatDialogModule, private http: HttpClient, private quizService: QuizService) {
     this.quizId = (this.route.snapshot.paramMap.get('id'));
 
     this.quizService.getQuizzes().subscribe(res => {

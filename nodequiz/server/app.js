@@ -11,7 +11,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
-const Quiz = require('./models/quizzes')
+const Quiz = require('./models/quizzes');
+const bank = require('./models/bank')
 
 let app = express();
 
@@ -78,6 +79,24 @@ app.get('/api/employees/:id', function (req, res, next) {
     }
   })
 })
+app.post('/api/results', function(req, res, next){
+  const bank = {
+    employeeId: req.body.employeeId,
+    quizId: req.body.quizId,
+    score: req.body.score
+  };
+
+  bank.create(result, function(err, results){
+    if(err) {
+      console.log(err);
+      return next(err);
+    } else {
+      console.log(results);
+      res.json(results);
+    }
+  });
+  });
+
 /**
  * Creates an express server and listens on port 3000
  */

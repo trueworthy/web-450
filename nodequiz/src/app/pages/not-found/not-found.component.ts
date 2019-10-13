@@ -4,6 +4,8 @@
  */
 
  import { Component, OnInit } from '@angular/core';
+ import { ActivatedRoute } from '@angular/router';
+ import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-not-found',
@@ -12,9 +14,13 @@
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

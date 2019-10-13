@@ -19,7 +19,7 @@
 
                                         <div *ngFor="let answer of question.answers" style="flex-direction: column;">
                                             <input [(ngModel)]="qs[question.id]" [checked]="qs[question.id]"
-                                                [value]="{{answer.id}};{{answer.isCorrect}}" name="q{{question.id}}"
+                                                value="{{answer.id}};{{answer.isCorrect}}" name="q{{question.id}}"
                                                 type="radio" />
                                             {{answer.text}}
                                         </div>
@@ -40,13 +40,13 @@
 </mat-card-actions>
 
 <!--<p>Answers: </p>
-<mat-radio-group style="display: inline-flex; flex-direction: column;">
-    <mat-radio-button style="padding: 5px" *ngFor="let answers of questions['Answers']" [value]="Answers.id">
-        {{Answer.ask}}
-    </mat-radio-button>
-</mat-radio-group>
-<br>
--->
+    <mat-radio-group style="display: inline-flex; flex-direction: column;">
+        <mat-radio-button style="padding: 5px" *ngFor="let answers of questions['Answers']" [value]="Answers.id">
+            {{Answer.ask}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <br>
+    -->
 <br>
 <div>
     <button color="accent" mat-button (click)="goBack()">Back</button>

@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuizService } from './quiz.service';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 
 @Component({
@@ -29,8 +29,10 @@ export class QuizComponent implements OnInit {
   quizResults: any;
   q: any = [];
   qs: any = [];
+  cumulativeSummary: {};
+  quizSummary: {}
 
-  constructor(private route: ActivatedRoute, private location: Location, private dialog: MatDialogModule, private http: HttpClient, private quizService: QuizService) {
+  constructor(private route: ActivatedRoute, private location: Location, private dialog: MatDialog, private http: HttpClient, private quizService: QuizService) {
     this.quizId = (this.route.snapshot.paramMap.get('id'));
 
     this.quizService.getQuizzes().subscribe(res => {
@@ -47,13 +49,29 @@ export class QuizComponent implements OnInit {
   }
 
   onSubmit(form){
-    this.quizResults = form;
+// score calculator
+    const totalPossiblePoints = 100;
+    const questionCount = this.quiz.questions.length;
+    let pointsPerQusetions = totalPossiblePoints / questionCount;
+    let quizScore = 0;
+
+//determining user's selction
+let correctRunningTotal = 0;
+let selectedAnswerIds = [];
+let selectedisCorrectProp = [];
+
+// FORM
+this.quizResults = form;
+this.quizResults['employeeId'] = this.employeeId;
+this.quizResults['quizId'] = this.quizId;
+   /* this.quizResults = form;
     this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
     console.table(this.quizResults);  //show quiz results
     alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quiz)
 
     localStorage.setItem('employeeId', '');
-  } catch (error) {
+  } }
+  catch (error) {
     this.http = error;
   }
   goBack() {
@@ -63,6 +81,7 @@ export class QuizComponent implements OnInit {
 
   }
   
-   /* onSubmit() {
+   onSubmit() {
     alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
     }*/
+  }}

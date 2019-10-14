@@ -1,29 +1,17 @@
 /**
  * Author: Lea Trueworthy
- * Description: store data from employee quizzes
+ * Description: store scores
  */
 
-const mongoose = require("mongoose");
+ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let quizSchema = new Schema({
-  bankId: { type: Schema.Types.ObjectId, ref: "bank" },
-  quizName: { type: Schema.Types.ObjectId, ref: "bank" },
-  question: String,
-  answers: {
-    answer_1: String,
-    answer_2: String,
-    answer_3: String,
-    answer_4: String,
-    isCorrect: String
-  }
-});
-
 let bankSchema = new Schema({
+  bank: any,
+  quizName: { type: Schema.Types.ObjectId, ref: "bank" },
   bankId: Number,
   quizName: String,
-  score: Number,
-  questions: [quizSchema]
+  questions: [bankSchema]
 });
 
-module.exports = mongoose.model("bank", bankSchema);
+module.exports = mongoose.model("bankSchema", bankSchema);

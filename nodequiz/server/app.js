@@ -12,7 +12,7 @@ const morgan = require('morgan');
 const path = require('path');
 const createError = require('http-errors');
 const Quiz = require('./models/quizzes');
-const bank = require('./models/bank')
+const quizResults = require('./models/quiz-results')
 
 let app = express();
 
@@ -79,27 +79,20 @@ app.get('/api/employees/:id', function (req, res, next) {
     }
   })
 })
-app.post('/api/results', function(req, res, next){
-  const bank = {
+/*************** Quiz Results API *******************************************/
+
+//Create Quiz Result
+app.post('/api/results', function(req, res, next) {
+  const result = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
-    score: req.body.score
+    result: req.body.result
   };
-
-  bank.create(result, function(err, results){
-    if(err) {
-      console.log(err);
-      return next(err);
-    } else {
-      console.log(results);
-      res.json(results);
-    }
-  });
-  });
+})
 
 /**
  * Creates an express server and listens on port 3000
  */
 http.createServer(app).listen(serverPort, function () {
   console.log(`Application started and listing on port: ${serverPort}`);
-});
+})

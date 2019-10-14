@@ -10,11 +10,12 @@ import { AppRoutes } from './app.routing';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { MatDialogModule } from '@angular/material/dialog';
+
 //import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
@@ -35,7 +36,7 @@ import { PresentationService } from './pages/presentation/presentation.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { QuizService } from './pages/quiz/quiz.service';
-import { ResultsComponent } from './pages/results/results.component'
+import { ResultsComponent } from './pages/results/results.component';
 
 @NgModule({
   declarations: [

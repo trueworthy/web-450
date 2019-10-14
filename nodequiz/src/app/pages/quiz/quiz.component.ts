@@ -10,7 +10,7 @@ import { QuizService } from './quiz.service';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDialogModule } from '@angular/material/dialog';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-quiz',
@@ -22,9 +22,11 @@ export class QuizComponent implements OnInit {
   quizzes: any;
   quiz: any;
   questions: any;
+  employeeId: number;
   //quizName: string;
   answers: string;
   quizNameFromUrl: string;
+  quizResults: any;
   q: any = [];
   qs: any = [];
 
@@ -44,8 +46,23 @@ export class QuizComponent implements OnInit {
 
   }
 
+  onSubmit(form){
+    this.quizResults = form;
+    this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
+    console.table(this.quizResults);  //show quiz results
+    alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quiz)
+
+    localStorage.setItem('employeeId', '');
+  } catch (error) {
+    this.http = error;
+  }
   goBack() {
     this.location.back();
   }
 
-}
+
+  }
+  
+   /* onSubmit() {
+    alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
+    }*/

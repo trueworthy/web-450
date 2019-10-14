@@ -28,15 +28,13 @@ export class QuizService {
     { id: 103, name: "Node" }
   ]
 }
+ngOnInit() {
 
+}
   getQuizzes() {
     return this.http.get('./assets/questions.json');
   }
-  
-  onSubmit(form){
-    this.quizResults = form;
-    this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
-  }
+
   
   /*
   user : string;

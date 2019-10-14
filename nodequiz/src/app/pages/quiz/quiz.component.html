@@ -1,7 +1,7 @@
 <div fxLayout="column" style="margin-top: 5%; margin-left: 15%; width: 70%;">
     <mat-card-content *ngIf="questions">
         <div fxLayout="column">
-            <form>
+            <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm.value); quizForm.reset();">
                 <div *ngFor="let question of questions">
                     <mat-card class="mat-elevation-z8">
                         <mat-card-content>
@@ -36,7 +36,7 @@
 
 
 <mat-card-actions>
-    <button type="submit" fxFlex mat-raised-button color="primary">Submit</button>
+    <button type="submit" fxFlex mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
 </mat-card-actions>
 
 <!--<p>Answers: </p>

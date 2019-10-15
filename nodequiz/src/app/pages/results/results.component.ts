@@ -26,16 +26,9 @@ export class ResultsComponent implements OnInit {
 
   }
 
-  @Input() public results;
-  @Input() public userData;
+  @Input() public quizResults;
 
   ngOnInit() {
-    console.log(this.results);
-    console.log(this.userData);
-  }
-
-  close() {
-    this.dialogRef.close();
-    this.router.navigate(["/"]);
+    console.log(this.quizResults);
   }
 }

@@ -83,6 +83,7 @@ export class QuizComponent implements OnInit {
     this.quizResults['quizId'] = this.quizId;
     console.log("form: " + form);
     
+
     // save quiz results to database
     this.http.post('/api/results/', {
       employeeId: this.employeeId,
@@ -90,10 +91,10 @@ export class QuizComponent implements OnInit {
       results: JSON.stringify(form)
     }).subscribe(
       err => {
-        console.log("POST call to results collection in error", err);
+        console.log("POST error", err);
       },
       () => {
-        console.log("The POST to results collection is now completed.");
+        console.log("POST complete");
         
       });
       
@@ -107,8 +108,6 @@ export class QuizComponent implements OnInit {
    catch (error) {
      this.http = error;
    }
-  
- 
  
    }
    
@@ -116,7 +115,7 @@ export class QuizComponent implements OnInit {
      alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
      }*/
   }
-  goBack() {
-    this.location.back();
-  }
+   goBack() {
+     this.location.back();
+   }
 }

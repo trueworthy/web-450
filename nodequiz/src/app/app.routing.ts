@@ -36,7 +36,7 @@ export const AppRoutes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'user/:id',
+        path: 'results/:id',
         component: ResultsComponent,
         canActivate: [AuthGuard]
       },

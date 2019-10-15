@@ -1,7 +1,7 @@
 <div fxLayout="column" style="margin-top: 5%; margin-left: 15%; width: 70%;">
     <mat-card-content *ngIf="questions">
         <div fxLayout="column">
-            <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm.value); quizForm.reset();">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form.value);" >
                 <div *ngFor="let question of questions">
                     <mat-card class="mat-elevation-z8">
                         <mat-card-content>

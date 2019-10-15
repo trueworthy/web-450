@@ -11,6 +11,7 @@ import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
+import { error } from 'util';
 
 @Component({
   selector: 'app-quiz',
@@ -47,41 +48,59 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  onSubmit(form){
-// score calculator
+  onSubmit(form) {
+    // score calculator
     const totalPossiblePoints = 100;
     const questionCount = this.quiz.questions.length;
     let pointsPerQusetions = totalPossiblePoints / questionCount;
     let quizScore = 0;
 
-//determining user's selction
-let correctRunningTotal = 0;
-let selectedAnswerIds = [];
-let selectedisCorrectProp = [];
+    //determining user's selction
+    let correctRunningTotal = 0;
+    let selectedAnswerIds = [];
+    let selectedisCorrectProp = [];
+    console.log("Q: " + this.questions);
 
-// FORM
-this.quizResults = form;
-this.quizResults['employeeId'] = this.employeeId;
-this.quizResults['quizId'] = this.quizId;
-   /* this.quizResults = form;
-    this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
-    console.table(this.quizResults);  //show quiz results
-    alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quiz)
+    // FORM
+    this.quizResults = form;
+    this.quizResults['employeeId'] = this.employeeId;
+    this.quizResults['quizId'] = this.quizId;
+    console.log("form: " + form);
 
-    localStorage.setItem('employeeId', '');
-  } }
-  catch (error) {
-    this.http = error;
+
+
+    // save quiz results to database
+    this.http.post('/api/results/', {
+      employeeId: this.employeeId,
+      quizId: this.quizId,
+      // Should I add get questions here?
+      results: JSON.stringify(form)
+    }).subscribe(
+      err => {
+        console.log("POST call to results collection in error", err);
+      },
+      () => {
+        console.log("The POST to results collection is now completed.");
+      });
+    /* this.quizResults = form;
+     this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
+     console.table(this.quizResults);  //show quiz results
+     alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quiz)
+ 
+     localStorage.setItem('employeeId', '');
+   } }
+   catch (error) {
+     this.http = error;
+   }
+   goBack() {
+     this.location.back();
+   }
+ 
+ 
+   }
+   
+    onSubmit() {
+     alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
+     }*/
   }
-  goBack() {
-    this.location.back();
-  }
-
-
-  }
-  
-   onSubmit() {
-    alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
-    }*/
-  }}
+}

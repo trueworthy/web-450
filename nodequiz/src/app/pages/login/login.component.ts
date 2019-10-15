@@ -3,7 +3,7 @@
  * Description: Login page
  */
 import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -19,8 +19,21 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   validEmployeesId: [1007, 1008, 1009, 1010, 1011];
   cookieValue = "unknown";
+  employeeId: any
 
-  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private router: Router, private cookieService: CookieService, private fb: FormBuilder, private http: HttpClient) {
+  }/* this.createForm();
+   }
+   /*createForm() {
+     this.form = this.fb.group({
+       employeeId: [''],
+       
+     });
+   }
+
+   addData(employeeId) {
+     this.ls.addData(employeeId);
+   }*/
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -32,12 +45,27 @@ export class LoginComponent implements OnInit {
   login() {
     const employeeId = this.form.controls['employeeId'].value;
     console.log(employeeId);
+/*function List($scope, $http){
+  var insertMethod = 'POST';
+  $scope.showLabel = true;
+
+  $scope.save = function(){
+    var formData = {
+      "employeeId" : this.employeeId,
+      
+    }
+  };
+  $scope.List();
+}*/
+   
 
     this.http.get('/api/employees/' + employeeId).subscribe(res => {
       if (res) {
         this.cookieService.set('isAuthenticated', 'true', 1);
         this.cookieService.set('employeeId', employeeId)
         this.cookieValue = this.cookieService.get('employeeId')
+        //localStorage.setItem('employeeId', JSON.stringify(this.employeeId));
+       // JSON.parse(localStorage.getItem('employeeId'));
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = "Invalid, please try again.";

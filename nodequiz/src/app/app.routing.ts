@@ -35,11 +35,11 @@ export const AppRoutes: Routes = [
         component: QuizComponent,
         canActivate: [AuthGuard]
       },
-      /*{
+      {
         path: 'user/:id',
         component: ResultsComponent,
         canActivate: [AuthGuard]
-      },*/
+      },
       {
         path: 'cumulative-summary',
         component: CumulativeSummaryComponent,

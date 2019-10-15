@@ -11,6 +11,7 @@ import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 import { error } from 'util';
 
 @Component({
@@ -23,7 +24,6 @@ export class QuizComponent implements OnInit {
   quizzes: any;
   quiz: any;
   questions: any;
-  employeeId: number;
   //quizName: string;
   answers: string;
   quizNameFromUrl: string;
@@ -31,10 +31,23 @@ export class QuizComponent implements OnInit {
   q: any = [];
   qs: any = [];
   cumulativeSummary: {};
-  quizSummary: {}
+  quizSummary: {};
+  cookieValue = "unknown";
+  employeeId: any;
 
-  constructor(private route: ActivatedRoute, private location: Location, private dialog: MatDialog, private http: HttpClient, private quizService: QuizService) {
+
+  constructor(private route: ActivatedRoute, private cookieService: CookieService, private location: Location, private dialog: MatDialog, private http: HttpClient, private quizService: QuizService) {
     this.quizId = (this.route.snapshot.paramMap.get('id'));
+    this.quiz = parseInt(this.route.snapshot.paramMap.get("id"));
+    //this.cookieValue = this.cookieService.get('employeeId')
+    this.employeeId = parseInt(this.cookieService.get('employeeId'));
+    console.log(this.employeeId + " employee number")
+
+
+
+    //this.employeeId = this.cookieService.get('employeeId');
+
+    //this.employeeId = parseInt(this.cookieService.get('employeeId'), 10);
 
     this.quizService.getQuizzes().subscribe(res => {
       this.quizzes = res;
@@ -42,16 +55,17 @@ export class QuizComponent implements OnInit {
       //this.quizNameFromUrl = route.snapshot.paramMap.get('id');  quizName: {{this.quizNameFromUrl}}
 
       console.log(this.quizzes);
-      console.log(this.quiz);
     })
   }
   ngOnInit() {
 
   }
   onSubmit(form) {
+
     // score calculator
     const totalPossiblePoints = 100;
-    const questionCount = this.quiz.questions.length;
+    this.quiz = this.quizzes.filter(q => q.id === this.quizId);
+    const questionCount = this.quiz.questions;
     let pointsPerQusetions = totalPossiblePoints / questionCount;
     let quizScore = 0;
 
@@ -62,18 +76,17 @@ export class QuizComponent implements OnInit {
     console.log("Q: " + this.questions);
 
     // FORM
+
     this.quizResults = form;
+    this.employeeId = this.cookieService.get('employeeId');
     this.quizResults['employeeId'] = this.employeeId;
     this.quizResults['quizId'] = this.quizId;
     console.log("form: " + form);
-
-
-
+    
     // save quiz results to database
     this.http.post('/api/results/', {
       employeeId: this.employeeId,
       quizId: this.quizId,
-      // Should I add get questions here?
       results: JSON.stringify(form)
     }).subscribe(
       err => {
@@ -81,7 +94,9 @@ export class QuizComponent implements OnInit {
       },
       () => {
         console.log("The POST to results collection is now completed.");
+        
       });
+      
     /* this.quizResults = form;
      this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
      console.table(this.quizResults);  //show quiz results
@@ -92,9 +107,7 @@ export class QuizComponent implements OnInit {
    catch (error) {
      this.http = error;
    }
-   goBack() {
-     this.location.back();
-   }
+  
  
  
    }
@@ -102,5 +115,8 @@ export class QuizComponent implements OnInit {
     onSubmit() {
      alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
      }*/
+  }
+  goBack() {
+    this.location.back();
   }
 }

@@ -80,10 +80,15 @@ app.get('/api/employees/:id', function (req, res, next) {
   })
 })
 /*************** Quiz Results API *******************************************/
+/*var userSchema = new mongoose.Schema({
+  employeeId: Number,
+  quizResults: String
+});
 
+var User = mongoose.model("User", userSchema);*/
 //Create Quiz Result
 app.post('/api/results', function(req, res, next) {
-  const result = {
+  const quizResults = {
     employeeId: req.body.employeeId,
     quizId: req.body.quizId,
     result: req.body.result

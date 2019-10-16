@@ -35,6 +35,10 @@ ngOnInit() {
     return this.http.get('./assets/questions.json');
   }
 
+  getQuizbyId(id){
+    return this.http.get('/api/quizzes/' + id);
+  }
+
   
   /*
   user : string;

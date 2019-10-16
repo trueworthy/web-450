@@ -37,6 +37,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { QuizService } from './pages/quiz/quiz.service';
 import { ResultsComponent } from './pages/results/results.component';
+import {QuizSummaryDialogComponent} from './shared/quiz-summary-dialog/quiz-summary-dialog.component'
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ResultsComponent } from './pages/results/results.component';
     HeaderComponent,
     QuizComponent,
     ResultsComponent,
+    QuizSummaryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +80,8 @@ import { ResultsComponent } from './pages/results/results.component';
     CookieService,
     AuthGuard, PresentationService,
     QuizService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [QuizSummaryDialogComponent]
+
 })
 export class AppModule { }

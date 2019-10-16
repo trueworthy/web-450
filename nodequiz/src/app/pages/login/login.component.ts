@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.http.get('/api/employees/' + employeeId).subscribe(res => {
       if (res) {
         this.cookieService.set('isAuthenticated', 'true', 1);
-        this.cookieService.set('employeeId', employeeId)
+        this.cookieService.set('employeeId', employeeId, 1)
         this.cookieValue = this.cookieService.get('employeeId')
         //localStorage.setItem('employeeId', JSON.stringify(this.employeeId));
        // JSON.parse(localStorage.getItem('employeeId'));

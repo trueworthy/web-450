@@ -5,7 +5,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from './quiz.service';
 import { filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { error } from 'util';
+import * as moment from 'moment'
+import { ResultsComponent } from 'src/app/shared';
 
 @Component({
   selector: 'app-quiz',
@@ -32,15 +34,14 @@ export class QuizComponent implements OnInit {
   qs: any = [];
   cumulativeSummary: {};
   quizSummary: {};
-  cookieValue = "unknown";
-  employeeId: any;
+  employeeId: number;
 
 
-  constructor(private route: ActivatedRoute, private cookieService: CookieService, private location: Location, private dialog: MatDialog, private http: HttpClient, private quizService: QuizService) {
-    this.quizId = (this.route.snapshot.paramMap.get('id'));
-    this.quiz = parseInt(this.route.snapshot.paramMap.get("id"));
+  constructor(private route: ActivatedRoute, private cookieService: CookieService, private location: Location, private dialog: MatDialog, private http: HttpClient, private quizService: QuizService, private router: Router) {
+    this.quizId = (this.route.snapshot.paramMap.get('id'))
+    this.quiz = parseInt(this.route.snapshot.paramMap.get("id"))
+    this.employeeId = parseInt(this.cookieService.get('employeeId'))
     //this.cookieValue = this.cookieService.get('employeeId')
-    this.employeeId = parseInt(this.cookieService.get('employeeId'));
     console.log(this.employeeId + " employee number")
 
 
@@ -78,26 +79,38 @@ export class QuizComponent implements OnInit {
     // FORM
 
     this.quizResults = form;
-    this.employeeId = this.cookieService.get('employeeId');
     this.quizResults['employeeId'] = this.employeeId;
     this.quizResults['quizId'] = this.quizId;
-    console.log("form: " + form);
-    
+    console.log('form ' + form);
+
 
     // save quiz results to database
     this.http.post('/api/results/', {
       employeeId: this.employeeId,
       quizId: this.quizId,
       results: JSON.stringify(form)
-    }).subscribe(
-      err => {
-        console.log("POST error", err);
-      },
-      () => {
-        console.log("POST complete");
-        
-      });
-      
+    }).subscribe(res => {
+    }, err => {
+      console.log("POST error", err);
+
+    }, () => {
+      console.log("POST complete");
+      for (const prop in this.quizResults) {
+        if (this.quizResults.hasOwnProperty(prop)) {
+          if (prop !== 'employeeId' && prop !== 'quizId') {
+            selectedAnswerIds.push(this.quizResults[prop].split(';')[0]);
+            selectedisCorrectProp.push(this.quizResults[prop].split(';')[1]);
+          }
+        }
+
+      }
+    });
+    const dialogRef = this.dialog.open(ResultsComponent, {
+      data: {
+
+      }
+    })
+
     /* this.quizResults = form;
      this.quizResults['employeeId'] = this.employeeId; // add the employeeId to the quizResults ojbect
      console.table(this.quizResults);  //show quiz results
@@ -115,7 +128,7 @@ export class QuizComponent implements OnInit {
      alert('Employee: ' + this.employeeId + '\nQuiz: ' + this.quizId)
      }*/
   }
-   goBack() {
-     this.location.back();
-   }
+  goBack() {
+    this.location.back();
+  }
 }
